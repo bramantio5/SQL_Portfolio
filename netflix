@@ -1,0 +1,31 @@
+SELECT * FROM netflix
+LIMIT 3;
+
+--How many movie type?--
+SELECT movie_type, COUNT(movie_type) FROM netflix
+GROUP BY movie_type;
+
+--How Many Movies released every year?--
+SELECT release_year, movie_type, COUNT (movie_type) count_released FROM netflix
+GROUP BY release_year, movie_type
+HAVING movie_type ='Movie'
+ORDER BY count_released ASC;
+
+--What year movie most released
+SELECT release_year, movie_type, COUNT (movie_type) count_released FROM netflix
+GROUP BY release_year, movie_type
+HAVING movie_type ='Movie'
+ORDER BY count_released DESC
+LIMIT 3;
+
+--which Rating have most movie--
+SELECT rating, count(title) movie FROM netflix
+WHERE movie_type != 'TV Show'
+GROUP BY rating
+ORDER BY movie DESC;
+
+--which Rating have most TV Show--
+SELECT rating, count(title) TV_Show FROM netflix
+WHERE movie_type != 'Movie'
+GROUP BY rating
+ORDER BY TV_Show DESC;
